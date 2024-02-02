@@ -1,9 +1,14 @@
 pipeline{
     agent any
+    enviornment{
+        VERSION_NAME="1.02"
+    }
+
     stages{
         stage("Compile"){
            steps{
              sh 'javac Test.java'
+             sh 'echo "${VERSION_NAME}"'
            }
         }
           stage("Run"){
@@ -26,6 +31,6 @@ pipeline{
         }
     }
 
-    
+
 }
 ///
