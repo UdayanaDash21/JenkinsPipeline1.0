@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    tools{
+        maven "maven"
+    }
     enviornment{
         VERSION_NAME="1.02"
     }
