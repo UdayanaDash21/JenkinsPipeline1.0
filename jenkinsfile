@@ -1,39 +1,36 @@
-pipeline{
+pipeline {
     agent any
-    tools{
+    tools {
         maven "maven"
     }
-    enviornment{
-        VERSION_NAME="1.02"
+    environment {
+        VERSION_NAME = "1.02"
     }
 
-    stages{
-        stage("Compile"){
-           steps{
-             sh 'javac Test.java'
-             sh 'echo "${VERSION_NAME}"'
-           }
+    stages {
+        stage("Compile") {
+            steps {
+                sh 'javac Test.java'
+                sh 'echo "${VERSION_NAME}"'
+            }
         }
-          stage("Run"){
 
-            steps{
-           sh 'java Test'
+        stage("Run") {
+            steps {
+                sh 'java Test'
             }
         }
     }
 
-    post{
-        always{
+    post {
+        always {
             sh 'echo "Status of Build"'
         }
-        success{
+        success {
             sh 'echo "build success"'
         }
-        failure{
+        failure {
             sh 'echo "build failed"'
         }
     }
-
-
 }
-///
